@@ -1,3 +1,4 @@
+package com.al.spring;
 import java.util.Scanner;
 
 public class test05 {
