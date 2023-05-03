@@ -21,7 +21,7 @@ public class test05 {
 //	test1(arr1,arr2);
 //	test2();
 //	test3(2,5);
-//	test5(45);
+//	test5(45); 
 	test6("hellos world");
 	}
 	
