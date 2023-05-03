@@ -1,5 +1,7 @@
 package com.al.spring;
-import java.util.Scanner;
+import java.util.*;
+
+import javax.xml.stream.events.Characters;
 
 public class test05 {
 
@@ -18,7 +20,9 @@ public class test05 {
 	
 //	test1(arr1,arr2);
 //	test2();
-	test3(2,5);
+//	test3(2,5);
+//	test5(45);
+	test6("hellos world");
 	}
 	
 	
@@ -88,8 +92,63 @@ public class test05 {
 		  if(b==0) return a;		  
 		  return getGcd(b, a%b);
 	  }
+	  
+	  //같은 숫자는 싫어 
+	    public static ArrayList<Integer>  test4(int []arr) {
+	        ArrayList<Integer> answer = new ArrayList<>();
+	        int dum=-1;
+	        for(int i=0; i<arr.length; i++){                        
+	            if(arr[i]!=dum){
+	                answer.add(arr[i]);
+	            }
+	            dum=arr[i];
+	        }
 
+	        return answer;
+	    }
+	    
+	    //3진법 뒤집
+	   public static int test5 (int n) {
+		    int answer =0;
+		    
+	        String a = Integer.toString(n,3);
+	        String[] arr= a.split("");	     
+	        ArrayList<String> li = new ArrayList<>();
+	        
+	        //뒤집
+	        for(int i=arr.length-1; -1<i; i--) {	        	
+	        	li.add(arr[i]);
+	        }
 
+	        String b=String.join("", li);   //list 변
+	        answer = Integer.parseInt(b,3); //3진수 -> 10진
+	 
+		   return answer;
+	   }
+
+	   //이상한 문자 만들기  
+	  public static String test6 (String s) {
+	      String answer = "";
+       	  String[] arr = s.split(""); 
+	        
+		  int dum=0;
+		  //짝수 : 대문자, 홀수 : 소문자  
+		  for(int i=0; i<arr.length; i++) {
+			  if(arr[i].equals(" ")) {
+				  dum =0;
+			  }else if(dum%2==0) {
+				  arr[i]=(arr[i].toUpperCase());
+				  dum++;
+			  }else if(dum%2!=0) {
+				  arr[i]=(arr[i].toLowerCase());
+				  dum++;
+			  }  
+			  answer += arr[i];
+		  }
+         
+		  System.out.println(answer);
+		  return answer;
+	  } 
 }
 
 
