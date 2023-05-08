@@ -18,11 +18,16 @@ public class test05 {
 	arr2[1][0]=200;
 	arr2[1][1]=1;
 	
+	int[] arr3 = {1,3,2,5,4};
+
+	
 //	test1(arr1,arr2);
 //	test2();
 //	test3(2,5);
 //	test5(45); 
 	test6("hellos world");
+	test7(arr3,3);
+	test8("a",5);
 	}
 	
 	
@@ -73,6 +78,7 @@ public class test05 {
 	  public static int[] test3(int n, int m) {
 		int[] answer = {};
 		
+		
 		//최대공약수 : 0이아닌 공통된 약수중 가장 큰 수   		
 		int c =getGcd(n,m);
 		
@@ -96,6 +102,8 @@ public class test05 {
 	  //같은 숫자는 싫어 
 	    public static ArrayList<Integer>  test4(int []arr) {
 	        ArrayList<Integer> answer = new ArrayList<>();
+	    
+	        
 	        int dum=-1;
 	        for(int i=0; i<arr.length; i++){                        
 	            if(arr[i]!=dum){
@@ -120,8 +128,8 @@ public class test05 {
 	        	li.add(arr[i]);
 	        }
 
-	        String b=String.join("", li);   //list 변
-	        answer = Integer.parseInt(b,3); //3진수 -> 10진
+	        String b=String.join("", li);   //list 변환  
+	        answer = Integer.parseInt(b,3); //3진수 -> 10진법  
 	 
 		   return answer;
 	   }
@@ -130,7 +138,8 @@ public class test05 {
 	  public static String test6 (String s) {
 	      String answer = "";
        	  String[] arr = s.split(""); 
-	        
+       	  
+       	  
 		  int dum=0;
 		  //짝수 : 대문자, 홀수 : 소문자  
 		  for(int i=0; i<arr.length; i++) {
@@ -146,9 +155,58 @@ public class test05 {
 			  answer += arr[i];
 		  }
          
-		  System.out.println(answer);
 		  return answer;
 	  } 
+	  
+	  //예산  
+	  public static int test7(int[] d, int budget) {
+	        int answer = 0;        
+	        
+	        Arrays.sort(d);
+	        int sum =0;
+	        for(int a : d){
+	            sum+=a;            
+	            if(sum<=budget){
+	              answer++;               
+	            }
+	        }
+	        
+	        
+	        return answer;
+	    }
+	  
+	  
+	    public static String test8(String s, int n) {
+	    	String answer = "";
+	    	//65 => A  90 => Z
+	        //97 => a  122 => z 
+	        for(int i=0; i<s.length(); i++) {
+	            char ch = s.charAt(i);
+	             //공백
+	            if(ch==' ') {
+	                answer += ch;
+	                continue;
+	            }
+	            //소문자
+	            if(ch>='a' && ch<='z') { 
+	                if(ch+n > 'z') {
+	                    answer += (char)(ch-26+n);
+	                }else {
+	                    answer += (char)(ch+n);
+	                }
+	            //대문자
+	            }else if(ch>='A' && ch<='Z') { 
+	                if(ch+n > 'Z') {
+	                    answer += (char)(ch-26+n);
+	                }else {
+	                    answer += (char)(ch+n);
+	                }
+	            }
+	        }
+	        return answer;
+	    }
+	  
+	  
 }
 
 
